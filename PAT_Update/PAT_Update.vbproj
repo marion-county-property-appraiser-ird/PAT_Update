@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F081A66F-B7FD-447F-B947-0E0E555DD1BA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <StartupObject>PAT_Update.Module1</StartupObject>
+    <StartupObject>PAT_Update.PAT_Update</StartupObject>
     <RootNamespace>PAT_Update</RootNamespace>
     <AssemblyName>PAT_Update</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -69,7 +69,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Module1.vb" />
+    <Compile Include="PAT_Update.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
