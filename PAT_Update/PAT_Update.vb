@@ -1,13 +1,13 @@
-﻿
-Imports System.Data.SqlClient
+﻿Imports System.Data.SqlClient
+
 Module PAT_Update
     Private rYear As Integer = 2022
     Private connStr As String = String.Format("Data Source=Merlin\MerlinSQL;Initial Catalog=CAMA{0};User ID=CamaUser;Password=mcpa27cama;", rYear)
-  Private connMerlin As New SqlConnection(connStr)
-  Private connStr2 As String = "Data Source=ARCGIS2;Initial Catalog=mcpagis;User ID=sde;Password=life=6*9;"
-  Private connMCPAGIS As New SqlConnection(connStr2)
-  Private connStrShared As String = String.Format("Data Source=Merlin\MerlinSQL;Initial Catalog=CAMA;User ID=CamaUser;Password=mcpa27cama;", rYear)
-  Private connShared As New SqlConnection(connStrShared)
+    Private connMerlin As New SqlConnection(connStr)
+    Private connStr2 As String = "Data Source=ARCGIS2;Initial Catalog=mcpagis;User ID=sde;Password=life=6*9;"
+    Private connMCPAGIS As New SqlConnection(connStr2)
+    Private connStrShared As String = String.Format("Data Source=Merlin\MerlinSQL;Initial Catalog=CAMA;User ID=CamaUser;Password=mcpa27cama;", rYear)
+    Private connShared As New SqlConnection(connStrShared)
 
     Sub Main()
         Dim x As Integer
@@ -108,10 +108,5 @@ Module PAT_Update
             com.Dispose()
         Next
         situses.Dispose()
-
-
-
-
     End Sub
-
 End Module

@@ -1,26 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Data;
-
 
 static class PAT_UpdateCSharp
 {
     private static int rYear = 2022;
     private static string connStr = string.Format(@"Data Source=Merlin\MerlinSQL;Initial Catalog=CAMA{0};User ID=CamaUser;Password=mcpa27cama;", rYear);
     private static SqlConnection connMerlin = new SqlConnection(connStr);
+   
     private static string connStr2 = "Data Source=ARCGIS2;Initial Catalog=mcpagis;User ID=sde;Password=life=6*9;";
     private static SqlConnection connMCPAGIS = new SqlConnection(connStr2);
+  
     private static string connStrShared = string.Format(@"Data Source=Merlin\MerlinSQL;Initial Catalog=CAMA;User ID=CamaUser;Password=mcpa27cama;", rYear);
     private static SqlConnection connShared = new SqlConnection(connStrShared);
 
@@ -47,9 +36,9 @@ static class PAT_UpdateCSharp
         myAdapter.Fill(situses, "DATA");
         myAdapter.Dispose();
 
+
         // 'Process names
-        myCommand = "delete CurrentName";
-        SqlCommand com = new SqlCommand(myCommand, connMCPAGIS);
+        SqlCommand com = new SqlCommand("delete CurrentName", connMCPAGIS);
         connMCPAGIS.Open();
         com.ExecuteNonQuery();
         connMCPAGIS.Close();
@@ -75,9 +64,9 @@ static class PAT_UpdateCSharp
         }
         names.Dispose();
 
+
         // Process sales
-        myCommand = "delete CurrentSale";
-        com = new SqlCommand(myCommand, connMCPAGIS);
+        com = new SqlCommand("delete CurrentSale", connMCPAGIS);
         connMCPAGIS.Open();
         com.ExecuteNonQuery();
         connMCPAGIS.Close();
@@ -99,9 +88,9 @@ static class PAT_UpdateCSharp
         }
         sales.Dispose();
 
+
         // Process situs
-        myCommand = "delete CurrentSitus";
-        com = new SqlCommand(myCommand, connMCPAGIS);
+        com = new SqlCommand("delete CurrentSitus", connMCPAGIS);
         connMCPAGIS.Open();
         com.ExecuteNonQuery();
         connMCPAGIS.Close();
