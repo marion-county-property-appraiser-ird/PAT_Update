@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7C27EB23-5259-47DA-9BFF-7992B793EB15}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PAT_UpdateCSharp</RootNamespace>
-    <AssemblyName>PAT_UpdateCSharp</AssemblyName>
+    <RootNamespace>PAT_Update</RootNamespace>
+    <AssemblyName>PAT_Update</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

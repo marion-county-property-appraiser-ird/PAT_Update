@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace PAT_UpdateCSharp
@@ -14,7 +15,7 @@ namespace PAT_UpdateCSharp
     
         private static string connStrShared = string.Format(@"Data Source=Merlin\MerlinSQL;Initial Catalog=CAMA;User ID=CamaUser;Password=mcpa27cama;", rYear);
         private static SqlConnection connShared = new SqlConnection(connStrShared);
-
+      
         static void Main()
         {
             int x;
@@ -46,7 +47,7 @@ namespace PAT_UpdateCSharp
             connMCPAGIS.Close();
             com.Dispose();
 
-            for (x = 0; x <= names.Tables[0].Rows.Count - 1; x++)
+            for (x = 0; x < names.Tables[0].Rows.Count; x++)
             {
                 string parcel = names.Tables[0].Rows[x]["ParcelNumber"].ToString();
                 int pkey = System.Convert.ToInt32(names.Tables[0].Rows[x]["PrimeKey"]);
@@ -65,8 +66,9 @@ namespace PAT_UpdateCSharp
                 com.Dispose();
             }
             names.Dispose();
+            System.IO.File.AppendAllText(String.Format(@"{0}\MerlinLogFiles\PAT_Updater.log", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)), $"Names have been updated. {DateTime.Now} \r\n");
 
-
+            
             // Process sales
             com = new SqlCommand("delete CurrentSale", connMCPAGIS);
             connMCPAGIS.Open();
@@ -74,7 +76,7 @@ namespace PAT_UpdateCSharp
             connMCPAGIS.Close();
             com.Dispose();
 
-            for (x = 0; x <= sales.Tables[0].Rows.Count - 1; x++)
+            for (x = 0; x < sales.Tables[0].Rows.Count; x++)
             {
                 string parcel = sales.Tables[0].Rows[x]["ParcelNumber"].ToString();
                 int mnth = System.Convert.ToInt32(sales.Tables[0].Rows[x]["Month"]);
@@ -89,6 +91,7 @@ namespace PAT_UpdateCSharp
                 com.Dispose();
             }
             sales.Dispose();
+            System.IO.File.AppendAllText(String.Format(@"{0}\MerlinLogFiles\PAT_Updater.log", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)), $"Sales have been updated. {DateTime.Now} \r\n");
 
 
             // Process situs
@@ -98,7 +101,7 @@ namespace PAT_UpdateCSharp
             connMCPAGIS.Close();
             com.Dispose();
 
-            for (x = 0; x <= situses.Tables[0].Rows.Count - 1; x++)
+            for (x = 0; x < situses.Tables[0].Rows.Count; x++)
             {
                 string parcel = situses.Tables[0].Rows[x]["ParcelNumber"].ToString();
                 int pkey = System.Convert.ToInt32(situses.Tables[0].Rows[x]["Primekey"]);
@@ -118,6 +121,8 @@ namespace PAT_UpdateCSharp
                 com.Dispose();
             }
             situses.Dispose();
+            System.IO.File.AppendAllText(String.Format(@"{0}\MerlinLogFiles\PAT_Updater.log", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)), $"Situs' have been updated. {DateTime.Now} \r\n");
+
         }
     }
 }

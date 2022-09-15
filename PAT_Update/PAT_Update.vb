@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports System.Runtime.InteropServices
 
 Module PAT_Update
     Private rYear As Integer = 2022
@@ -57,6 +58,8 @@ Module PAT_Update
             com.Dispose()
         Next
         names.Dispose()
+        My.Computer.FileSystem.WriteAllText(String.Format("{0}\MerlinLogFiles\PAT_Updater.log", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)), "Names have been updated." & "  " & DateTime.Now.ToShortDateString & vbCrLf, True)
+
 
         'Process sales
         myCommand = "delete CurrentSale"
@@ -80,6 +83,8 @@ Module PAT_Update
             com.Dispose()
         Next
         sales.Dispose()
+        My.Computer.FileSystem.WriteAllText(String.Format("{0}\MerlinLogFiles\PAT_Updater.log", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)), "Sales have been updated." & "  " & DateTime.Now.ToShortDateString & vbCrLf, True)
+
 
         'Process situs
         myCommand = "delete CurrentSitus"
@@ -108,5 +113,7 @@ Module PAT_Update
             com.Dispose()
         Next
         situses.Dispose()
+        My.Computer.FileSystem.WriteAllText(String.Format("{0}\MerlinLogFiles\PAT_Updater.log", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)), "Situs' have been updated." & "  " & DateTime.Now.ToShortDateString & vbCrLf, True)
+
     End Sub
 End Module
