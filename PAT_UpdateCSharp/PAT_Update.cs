@@ -7,7 +7,7 @@ namespace PAT_UpdateCSharp
 {
     internal class PAT_Update
     {
-        private static int rYear = 2023;
+        private static int rYear = 2024;
         private static string connStr = string.Format(@"Data Source=Merlin\MerlinSQL;Initial Catalog=CAMA{0};User ID=CamaUser;Password=mcpa27cama;", rYear);
         private static SqlConnection connMerlin = new SqlConnection(connStr);
 
@@ -45,7 +45,7 @@ namespace PAT_UpdateCSharp
             myAdapter.Fill(names, "DATA");
             myAdapter.Dispose();
 
-            myCommand = string.Format("select ParcelNumber, Month, Year, Price  from Sale Join CAMA{0}.dbo.MasterParcel{0} on Sale.PrimeKey = CAMA{0}.dbo.MasterParcel{0}.Primekey Where roll = 1 And status = 0 And specialuse = '' and confidential = '' and year > {0} - 4", rYear);
+            myCommand = string.Format("select ParcelNumber, Month, Day, Year, Price  from Sale Join CAMA{0}.dbo.MasterParcel{0} on Sale.PrimeKey = CAMA{0}.dbo.MasterParcel{0}.Primekey Where roll = 1 And status = 0 And specialuse = '' and confidential = '' and year > {0} - 4", rYear);
             myAdapter = new SqlDataAdapter(myCommand, connShared);
             DataSet sales = new DataSet();
             myAdapter.Fill(sales, "DATA");
