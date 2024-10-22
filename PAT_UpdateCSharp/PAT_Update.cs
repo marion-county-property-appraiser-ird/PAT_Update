@@ -7,7 +7,7 @@ namespace PAT_UpdateCSharp
 {
     internal class PAT_Update
     {
-        private static int rYear = 2024;
+        private static int rYear = 2025;
         private static string connStr = string.Format(@"Data Source=Merlin\MerlinSQL;Initial Catalog=CAMA{0};User ID=CamaUser;Password=mcpa27cama;", rYear);
         private static SqlConnection connMerlin = new SqlConnection(connStr);
 
